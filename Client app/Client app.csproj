@@ -8,4 +8,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Exchange rates\Exchange rates.csproj" />
+  </ItemGroup>
+
 </Project>

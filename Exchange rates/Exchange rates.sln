@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exchange rates", "Exchange rates.csproj", "{4FE9C5FF-A24D-4DCB-BE30-B1F5EF3738D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client app", "..\Client app\Client app.csproj", "{6574924A-DF74-4533-84DA-43B878CD7BAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4FE9C5FF-A24D-4DCB-BE30-B1F5EF3738D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FE9C5FF-A24D-4DCB-BE30-B1F5EF3738D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FE9C5FF-A24D-4DCB-BE30-B1F5EF3738D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6574924A-DF74-4533-84DA-43B878CD7BAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6574924A-DF74-4533-84DA-43B878CD7BAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6574924A-DF74-4533-84DA-43B878CD7BAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6574924A-DF74-4533-84DA-43B878CD7BAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

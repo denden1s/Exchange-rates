@@ -1,25 +1,37 @@
-﻿namespace Exchange_rates.Models
+﻿using System.Linq;
+namespace Exchange_rates.Models
 {
+    // Need to realize cache function
     public class Cache
     {
-        public BankAPI USD { get; set; }//id 431 
-        public BankAPI EUR { get; set; }//id 451
-        public BankAPI RUB { get; set; }// id 456
-        public BankAPI BTC { get; set; } // Необязательно
+        private FileWorker _file;
+        private List<BankAPI> _ratesToAdd;
+        public List<BankAPI> Rates { get;private set; }
 
-        //сохранение кеша в файл
+        public Cache(string filename)
+        {
+            _file = new FileWorker(filename);
+            string fileContent = _file.GetContent();
+            if (fileContent == string.Empty)
+                Rates = new List<BankAPI>();
+            else
+                Rates = JsonWorker.ConvertFromJsonToList(fileContent);
 
-        //как будет работать считывание кеша. 
-        //Есть файл кеша, если там нет данных по текущему периоду, то добавить их туда, если есть то обращаться
-        //к файлу а не апи.
+            _ratesToAdd = new List<BankAPI>();
+        }
 
-        //запрос на динамический период:
-        //https://www.nbrb.by/api/exrates/rates/dynamics/{id}?startdate={2022-5-5}&enddate={date}
+        public void TakeData(List<BankAPI> data)
+        {
+            if (Rates.Count > 0)
+                _ratesToAdd = (List<BankAPI>)data.Except(Rates);
+            else
+                _ratesToAdd = data;
 
-        //Единичный запрос данных
-        // 
-        //проверка дат должна быть по объектам конкретной валюты linq запросы
-        //для проверки на отсутствие можно использовать разность множеств
+            _file.WriteData(JsonWorker.ConvertToJson(_ratesToAdd));
+            foreach (var rate in _ratesToAdd)
+                Rates.Add(rate);
+
+            _ratesToAdd.Clear();
+        }
     }
-
 }
