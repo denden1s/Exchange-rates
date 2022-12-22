@@ -19,17 +19,17 @@ namespace Exchange_rates.Controllers
         }
         // GET: ExchangeRatesController
         [HttpGet("concrete/{id}&{startPeriod}&{endPeriod}")]
-        public async Task<ActionResult<List<BankAPI>>> GetConcreteDate(int id, string startPeriod, string endPeriod)
+        public async Task<ActionResult<List<Rates>>> GetConcreteDate(int id, string startPeriod, string endPeriod)
         {
-            List<BankAPI> currentRate = _requests.GetRateOnConcretePeriod(id,startPeriod, endPeriod);
+            List<Rates> currentRate = _requests.GetRateOnConcretePeriod(id,startPeriod, endPeriod);
             _cache.TakeData(currentRate);
             return currentRate;
         }
 
         [HttpGet("floating/{id}&{startPeriod}")]
-        public async Task<ActionResult<List<BankAPI>>> GetFromStart(int id, string startPeriod)
+        public async Task<ActionResult<List<Rates>>> GetFromStart(int id, string startPeriod)
         {
-            List<BankAPI> currentRate = _requests.GetRateOnConcretePeriod(id, startPeriod, "");
+            List<Rates> currentRate = _requests.GetRateOnConcretePeriod(id, startPeriod, "");
             _cache.TakeData(currentRate);
             return currentRate;
         }

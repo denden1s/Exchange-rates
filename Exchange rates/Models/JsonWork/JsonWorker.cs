@@ -7,25 +7,25 @@ namespace Exchange_rates.Models.JsonWork
     // Need to serialize data
     public static class JsonWorker
     {
-        public static BankAPI ConvertFromJson(string json)
+        public static Rates ConvertFromJson(string json)
         {
             var options = new JsonSerializerOptions
             {
                 PropertyNamingPolicy = new CustomNamingToRead()
             };
-            return JsonSerializer.Deserialize<BankAPI>(json,options);
+            return JsonSerializer.Deserialize<Rates>(json,options);
         }
 
 
-        public static List<BankAPI> ConvertFromJsonToList(string json)
+        public static List<Rates> ConvertFromJsonToList(string json)
         {
             var options = new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
             };
-            return JsonSerializer.Deserialize<List<BankAPI>>(json, options);
+            return JsonSerializer.Deserialize<List<Rates>>(json, options);
         }
-        public static string ConvertToJson(BankAPI convertedObject)
+        public static string ConvertToJson(Rates convertedObject)
         {
             var options = new JsonSerializerOptions
             {
@@ -34,7 +34,7 @@ namespace Exchange_rates.Models.JsonWork
             };
             return JsonSerializer.Serialize(convertedObject, options);
         }
-        public static string ConvertToJson(List<BankAPI> convertedObject)
+        public static string ConvertToJson(List<Rates> convertedObject)
         {
             var options = new JsonSerializerOptions
             {

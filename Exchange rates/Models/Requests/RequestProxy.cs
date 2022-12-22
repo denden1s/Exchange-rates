@@ -4,12 +4,12 @@ namespace Exchange_rates.Models.Requests
     // Need to choose place for loading data
     public class RequestProxy : IRequests
     {
-        private List<BankAPI> _dataInCache;
+        private List<Rates> _dataInCache;
         private Requests _requests;
 
         // Need to convert ID from int to string
         private Dictionary<int, string> _currency;
-        public RequestProxy(List<BankAPI> data)
+        public RequestProxy(List<Rates> data)
         {
             _dataInCache = data;
             _requests = new Requests();
@@ -21,7 +21,7 @@ namespace Exchange_rates.Models.Requests
             };
         }
 
-        public BankAPI GetCurrentDateRate(int id)
+        public Rates GetCurrentDateRate(int id)
         {
             try
             {
@@ -36,12 +36,12 @@ namespace Exchange_rates.Models.Requests
             }
             catch (Exception)
             {
-                return new BankAPI();
+                return new Rates();
             }
             
         }
 
-        public List<BankAPI> GetRateOnConcretePeriod(int id, string startDate, string endDate = "")
+        public List<Rates> GetRateOnConcretePeriod(int id, string startDate, string endDate = "")
         {
             try
             {
@@ -50,7 +50,7 @@ namespace Exchange_rates.Models.Requests
                 if (end < start)
                     throw new Exception();
                 double dayDifference = (end - start).TotalDays;
-                List<BankAPI> period = _dataInCache.Where(
+                List<Rates> period = _dataInCache.Where(
                     r => r.Date >= start && r.Date < end && r.Currency == _currency[id]
                     ).ToList();
                 if (Math.Ceiling(dayDifference) == period.Count())
@@ -60,7 +60,7 @@ namespace Exchange_rates.Models.Requests
             }
             catch (Exception)
             {
-                return new List<BankAPI>();
+                return new List<Rates>();
             }
            
         }

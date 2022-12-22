@@ -7,22 +7,22 @@ namespace Exchange_rates.Models
     public class Cache
     {
         private FileWorker _file;
-        private List<BankAPI> _ratesToAdd;
-        public List<BankAPI> Rates { get;private set; }
+        private List<Rates> _ratesToAdd;
+        public List<Rates> Rates { get;private set; }
 
         public Cache(string filename)
         {
             _file = new FileWorker(filename);
             string fileContent = _file.GetContent();
             if (fileContent == string.Empty)
-                Rates = new List<BankAPI>();
+                Rates = new List<Rates>();
             else
                 Rates = JsonWorker.ConvertFromJsonToList(fileContent);
 
-            _ratesToAdd = new List<BankAPI>();
+            _ratesToAdd = new List<Rates>();
         }
 
-        public void TakeData(List<BankAPI> data)
+        public void TakeData(List<Rates> data)
         {
             if (Rates.Count > 0)
             {

@@ -9,7 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Exchange rates\Exchange rates.csproj" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.0" />
+    <PackageReference Include="RestSharp" Version="108.0.3" />
+    <PackageReference Include="Syncfusion.SfChart.WPF" Version="20.4.0.38" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SciChart.Charting">
+      <HintPath>..\..\..\..\.nuget\packages\scichart\6.6.0.26505\lib\netcoreapp3.1\SciChart.Charting.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
