@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using Exchange_rates.Models.JsonWork;
+
 namespace Exchange_rates.Models
 {
     // Need to realize cache function
@@ -23,15 +25,25 @@ namespace Exchange_rates.Models
         public void TakeData(List<BankAPI> data)
         {
             if (Rates.Count > 0)
-                _ratesToAdd = (List<BankAPI>)data.Except(Rates);
+            {
+                foreach (var rate in data)
+                {
+                    var currentRate = Rates.Where(r => r.Date == rate.Date
+                    && r.Currency == rate.Currency).Count();
+                    if (currentRate == 0)
+                        _ratesToAdd.Add(rate);
+                }
+            }
             else
                 _ratesToAdd = data;
 
-            _file.WriteData(JsonWorker.ConvertToJson(_ratesToAdd));
-            foreach (var rate in _ratesToAdd)
-                Rates.Add(rate);
-
-            _ratesToAdd.Clear();
+            if(_ratesToAdd.Count > 0)
+            {
+                foreach (var rate in _ratesToAdd)
+                    Rates.Add(rate);
+                _file.WriteData(JsonWorker.ConvertToJson(Rates));
+                _ratesToAdd.Clear();
+            }
         }
     }
 }

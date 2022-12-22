@@ -9,11 +9,11 @@ namespace Exchange_rates.Models
 
         public FileWorker(string fileName)
         {
-            _fileName = fileName;
+            _fileName = "./" + fileName;
             if(!File.Exists(_fileName))
             {
-                FileInfo fileInf = new FileInfo(_fileName);
-                fileInf.Create();
+                FileInfo file = new FileInfo(_fileName);
+                File.WriteAllText(_fileName, "");
             }
         }
 
@@ -24,9 +24,10 @@ namespace Exchange_rates.Models
         }
         public void WriteData(string data)
         {
-            using (StreamWriter writer = new StreamWriter(_fileName, true))
+            using (StreamWriter writer = new StreamWriter(_fileName, false))
             {
                 writer.Write(data);
+                writer.Close();
             }
         }
     }

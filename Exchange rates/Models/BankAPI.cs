@@ -1,12 +1,24 @@
-﻿namespace Exchange_rates.Models
+﻿using System.Text.Json.Serialization;
+
+namespace Exchange_rates.Models
 {
     // Need to take data from json to objects
     public class BankAPI //Может изменить имя на Rates?
     {
         private int _id;//нужно ли 
+
+        
         public string Currency { get; set; }
+
+
+
         public DateTime Date { get; set; }
+
+
         public decimal Value { get; set; }
+
+
+
         public int Amount { get; set; }
 
         public BankAPI(){ }

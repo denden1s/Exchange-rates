@@ -4,6 +4,6 @@
     public interface IRequests
     {
         public BankAPI GetCurrentDateRate(int id);
-        public List<BankAPI> GetRateOnConcretePeriod(int id, string startDate, string ?endDate);
+        public List<BankAPI> GetRateOnConcretePeriod(int id, string startDate, string endDate = "");
     }
 }
