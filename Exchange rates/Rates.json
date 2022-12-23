@@ -106,5 +106,119 @@
     "date": "2022-12-06T00:00:00",
     "value": 2.5673,
     "amount": 1
+  },
+  {
+    "currency": "USD",
+    "date": "2022-12-12T00:00:00",
+    "value": 2.4719,
+    "amount": 1
+  },
+  {
+    "currency": "USD",
+    "date": "2022-12-13T00:00:00",
+    "value": 2.4843,
+    "amount": 1
+  },
+  {
+    "currency": "USD",
+    "date": "2022-12-14T00:00:00",
+    "value": 2.5022,
+    "amount": 1
+  },
+  {
+    "currency": "RUB",
+    "date": "2022-12-12T00:00:00",
+    "value": 3.9619,
+    "amount": 100
+  },
+  {
+    "currency": "RUB",
+    "date": "2022-12-13T00:00:00",
+    "value": 3.9611,
+    "amount": 100
+  },
+  {
+    "currency": "RUB",
+    "date": "2022-12-14T00:00:00",
+    "value": 3.9635,
+    "amount": 100
+  },
+  {
+    "currency": "RUB",
+    "date": "2022-12-07T00:00:00",
+    "value": 3.9346,
+    "amount": 100
+  },
+  {
+    "currency": "RUB",
+    "date": "2022-12-08T00:00:00",
+    "value": 3.9373,
+    "amount": 100
+  },
+  {
+    "currency": "RUB",
+    "date": "2022-12-09T00:00:00",
+    "value": 3.9504,
+    "amount": 100
+  },
+  {
+    "currency": "RUB",
+    "date": "2022-12-10T00:00:00",
+    "value": 3.9504,
+    "amount": 100
+  },
+  {
+    "currency": "RUB",
+    "date": "2022-12-11T00:00:00",
+    "value": 3.9504,
+    "amount": 100
+  },
+  {
+    "currency": "RUB",
+    "date": "2022-12-15T00:00:00",
+    "value": 3.9613,
+    "amount": 100
+  },
+  {
+    "currency": "RUB",
+    "date": "2022-12-16T00:00:00",
+    "value": 3.9554,
+    "amount": 100
+  },
+  {
+    "currency": "RUB",
+    "date": "2022-12-17T00:00:00",
+    "value": 3.9554,
+    "amount": 100
+  },
+  {
+    "currency": "RUB",
+    "date": "2022-12-18T00:00:00",
+    "value": 3.9554,
+    "amount": 100
+  },
+  {
+    "currency": "RUB",
+    "date": "2022-12-19T00:00:00",
+    "value": 3.9552,
+    "amount": 100
+  },
+  {
+    "currency": "RUB",
+    "date": "2022-12-20T00:00:00",
+    "value": 3.9334,
+    "amount": 100
+  },
+  {
+    "currency": "RUB",
+    "date": "2022-12-21T00:00:00",
+    "value": 3.8590,
+    "amount": 100
+  },
+  {
+    "currency": "RUB",
+    "date": "2022-12-22T00:00:00",
+    "value": 3.8281,
+    "amount": 100
   }
 ]
