@@ -11,6 +11,7 @@ namespace Exchange_rates.Models
         private decimal _value;
         private DateTime _date;
         private string _dateFormat;
+
         [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
@@ -40,7 +41,7 @@ namespace Exchange_rates.Models
             }
         }
 
-            [JsonPropertyName("value")]
+        [JsonPropertyName("value")]
         public decimal Value 
         { 
             get
@@ -58,14 +59,6 @@ namespace Exchange_rates.Models
         public int Amount { get; set; }
 
         public Rates() { }
-
-        public Rates(string currency, DateTime date, decimal value, int amount)
-        {
-            Currency = currency;
-            Date = date;
-            Value = value;
-            Amount = amount;
-        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

@@ -1,7 +1,5 @@
 ﻿using Exchange_rates.Models;
-using Exchange_rates.Models.JsonWork;
 using Exchange_rates.Models.Requests;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Exchange_rates.Controllers
@@ -18,18 +16,18 @@ namespace Exchange_rates.Controllers
             _requests = new RequestProxy(_cache.Rates);
         }
         // GET: ExchangeRatesController
-        [HttpGet("concrete/{id}&{startPeriod}&{endPeriod}")]
-        public async Task<ActionResult<List<Rates>>> GetConcreteDate(int id, string startPeriod, string endPeriod)
+        [HttpGet("concrete/{currencyType}&{startPeriod}&{endPeriod}")]
+        public async Task<ActionResult<List<Rates>>> GetConcreteDate(string currencyType, string startPeriod, string endPeriod)
         {
-            List<Rates> currentRate = _requests.GetRateOnConcretePeriod(id,startPeriod, endPeriod);
+            List<Rates> currentRate = _requests.GetRateOnConcretePeriod(currencyType, startPeriod, endPeriod);
             _cache.TakeData(currentRate);
             return currentRate;
         }
 
-        [HttpGet("floating/{id}&{startPeriod}")]
-        public async Task<ActionResult<List<Rates>>> GetFromStart(int id, string startPeriod)
+        [HttpGet("floating/{currencyType}&{startPeriod}")]
+        public async Task<ActionResult<List<Rates>>> GetFromStart(string currencyType, string startPeriod)
         {
-            List<Rates> currentRate = _requests.GetRateOnConcretePeriod(id, startPeriod, "");
+            List<Rates> currentRate = _requests.GetRateOnConcretePeriod(currencyType, startPeriod, "");
             _cache.TakeData(currentRate);
             return currentRate;
         }

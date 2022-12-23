@@ -14,13 +14,5 @@ namespace Exchange_rates.Models
         public int Amount { get; set; }
 
         public Rates(){ }
-
-        public Rates(string currency, DateTime date, decimal value, int amount)
-        {
-            Currency = currency;
-            Date = date;
-            Value = value;
-            Amount = amount;
-        }
     }
 }

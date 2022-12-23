@@ -6,42 +6,13 @@ namespace Exchange_rates.Models.Requests
     {
         private List<Rates> _dataInCache;
         private Requests _requests;
-
-        // Need to convert ID from int to string
-        private Dictionary<int, string> _currency;
         public RequestProxy(List<Rates> data)
         {
             _dataInCache = data;
             _requests = new Requests();
-            _currency = new Dictionary<int, string>()
-            {
-                { 431, "USD"},
-                { 451, "EUR"},
-                { 456, "RUB"}
-            };
         }
 
-        public Rates GetCurrentDateRate(int id)
-        {
-            try
-            {
-                DateTime currentDay = DateTime.Now;
-                bool contain = _dataInCache.Where(r => r.Date == currentDay && r.Currency == _currency[id]).Count() != 0;
-                if (contain)
-                    return _dataInCache.Where(
-                        r => r.Date == currentDay && r.Currency == _currency[id]
-                        ).FirstOrDefault();
-                else
-                    return _requests.GetCurrentDateRate(id);
-            }
-            catch (Exception)
-            {
-                return new Rates();
-            }
-            
-        }
-
-        public List<Rates> GetRateOnConcretePeriod(int id, string startDate, string endDate = "")
+        public List<Rates> GetRateOnConcretePeriod(string currencyType, string startDate, string endDate = "")
         {
             try
             {
@@ -51,12 +22,12 @@ namespace Exchange_rates.Models.Requests
                     throw new Exception();
                 double dayDifference = (end - start).TotalDays;
                 List<Rates> period = _dataInCache.Where(
-                    r => r.Date >= start && r.Date < end && r.Currency == _currency[id]
+                    r => r.Date >= start && r.Date < end && r.Currency == currencyType
                     ).ToList();
                 if (Math.Ceiling(dayDifference) == period.Count())
                     return period;
                 else
-                    return _requests.GetRateOnConcretePeriod(id, startDate, endDate);
+                    return _requests.GetRateOnConcretePeriod(currencyType, startDate, endDate);
             }
             catch (Exception)
             {

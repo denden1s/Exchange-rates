@@ -22,6 +22,7 @@ namespace Exchange_rates.Models
             using (StreamReader reader = new StreamReader(_fileName))
                 return reader.ReadToEnd();
         }
+
         public void WriteData(string data)
         {
             using (StreamWriter writer = new StreamWriter(_fileName, false))

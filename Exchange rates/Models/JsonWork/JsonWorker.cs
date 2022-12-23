@@ -16,7 +16,6 @@ namespace Exchange_rates.Models.JsonWork
             return JsonSerializer.Deserialize<Rates>(json,options);
         }
 
-
         public static List<Rates> ConvertFromJsonToList(string json)
         {
             var options = new JsonSerializerOptions
@@ -25,15 +24,7 @@ namespace Exchange_rates.Models.JsonWork
             };
             return JsonSerializer.Deserialize<List<Rates>>(json, options);
         }
-        public static string ConvertToJson(Rates convertedObject)
-        {
-            var options = new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            };
-            return JsonSerializer.Serialize(convertedObject, options);
-        }
+
         public static string ConvertToJson(List<Rates> convertedObject)
         {
             var options = new JsonSerializerOptions

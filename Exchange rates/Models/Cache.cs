@@ -14,11 +14,7 @@ namespace Exchange_rates.Models
         {
             _file = new FileWorker(filename);
             string fileContent = _file.GetContent();
-            if (fileContent == string.Empty)
-                Rates = new List<Rates>();
-            else
-                Rates = JsonWorker.ConvertFromJsonToList(fileContent);
-
+            Rates = fileContent == string.Empty ? Rates = new List<Rates>() : JsonWorker.ConvertFromJsonToList(fileContent);
             _ratesToAdd = new List<Rates>();
         }
 
@@ -41,6 +37,7 @@ namespace Exchange_rates.Models
             {
                 foreach (var rate in _ratesToAdd)
                     Rates.Add(rate);
+
                 _file.WriteData(JsonWorker.ConvertToJson(Rates));
                 _ratesToAdd.Clear();
             }

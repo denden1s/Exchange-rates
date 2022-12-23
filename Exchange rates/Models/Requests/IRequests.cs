@@ -3,7 +3,6 @@
     // Need to creating proxy
     public interface IRequests
     {
-        public Rates GetCurrentDateRate(int id);
-        public List<Rates> GetRateOnConcretePeriod(int id, string startDate, string endDate = "");
+        public List<Rates> GetRateOnConcretePeriod(string currencyType, string startDate, string endDate = "");
     }
 }
