@@ -3,10 +3,10 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 
-namespace Exchange_rates.Models
+namespace Client_app.Models
 {
     // Need to take data from json to objects
-    public class Rates : INotifyPropertyChanged//Может изменить имя на Rates?
+    public class Rates : INotifyPropertyChanged
     {
         private decimal _value;
         private DateTime _date;
@@ -16,8 +16,8 @@ namespace Exchange_rates.Models
         public string Currency { get; set; }
 
         [JsonPropertyName("date")]
-        public DateTime Date 
-        { 
+        public DateTime Date
+        {
             get
             {
                 return _date;
@@ -42,8 +42,8 @@ namespace Exchange_rates.Models
         }
 
         [JsonPropertyName("value")]
-        public decimal Value 
-        { 
+        public decimal Value
+        {
             get
             {
                 return _value;

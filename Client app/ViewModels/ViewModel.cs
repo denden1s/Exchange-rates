@@ -1,4 +1,4 @@
-﻿using Exchange_rates.Models;
+﻿using Client_app.Models;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -6,16 +6,16 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Threading.Tasks;
-using System.Windows.Markup;
-using System.Windows.Media;
+using System.Windows.Controls;
 
-namespace Client_app
+namespace Client_app.ViewModels
 {
     public class ViewModel : INotifyPropertyChanged
     {
         private string _currency;
         private string header;
         private string _url;
+        private CurrencyTypes _types;
         private List<Rates> _rates;
 
         private void GetData(string type, string startPeriod, string endPeriod = "")
@@ -53,20 +53,19 @@ namespace Client_app
             DateTime endDate = new DateTime();
             bool dateEx = DateTime.TryParse(startPeriod, out startDate);
             if (!dateEx)
-                throw (new Exception("Начальная дата введена некорректно"));
+                throw new Exception("Начальная дата введена некорректно");
             if (endPeriod != string.Empty)
             {
                 dateEx = DateTime.TryParse(endPeriod, out endDate);
                 if (!dateEx)
-                    throw (new Exception("Конечная дата введена некорректно"));
+                    throw new Exception("Конечная дата введена некорректно");
             }
-            //перенести в отдельный метод
-            if (endPeriod!= string.Empty && startDate > endDate)
-                throw (new Exception("Начальная дата больше конечной"));
+            if (endPeriod != string.Empty && startDate > endDate)
+                throw new Exception("Начальная дата больше конечной");
 
             DateTime fiveYearLimit = DateTime.Now.AddYears(-5);
             if (startDate < fiveYearLimit)
-                throw (new Exception("Можно получить данные только за последние пять лет"));
+                throw new Exception("Можно получить данные только за последние пять лет");
 
         }
 
@@ -74,8 +73,8 @@ namespace Client_app
         public Dictionary<string, int> CurrencyId { get; set; }
 
         public List<string> CurrencyType { get; set; }
-        public List<Rates> Rates 
-        { 
+        public List<Rates> Rates
+        {
             get
             {
                 return _rates;
@@ -88,7 +87,10 @@ namespace Client_app
         }
         public string Header
         {
-            get { return header; }
+            get
+            {
+                return header;
+            }
             set
             {
                 header = value;
@@ -97,7 +99,10 @@ namespace Client_app
         }
         public string Currency
         {
-            get { return _currency; }
+            get
+            {
+                return _currency;
+            }
             set
             {
                 _currency = value;
@@ -108,7 +113,8 @@ namespace Client_app
         public ViewModel(string url)
         {
             Header = "Курс валют по отношению к Белорусскому рублю";
-            CurrencyType = new List<string> { "USD", "EUR", "RUB" }; //Вынести в отдельный файл
+            _types = new CurrencyTypes();
+            CurrencyType = _types.Types;
             Rates = new List<Rates>();
             Currency = CurrencyType[0];
             _url = url;
@@ -119,9 +125,10 @@ namespace Client_app
             _url = url;
         }
 
-        public void GetDataAsync(string type, string startPeriod, string endPeriod = "")
+        public async void GetDataAsync(Button btn, string type, string startPeriod, string endPeriod = "")
         {
-            Task.Run(() => GetData(type, startPeriod, endPeriod));
+            await Task.Run(() =>GetData(type, startPeriod, endPeriod));
+            btn.IsEnabled = true;
         }
 
         public void OnPropertyChanged([CallerMemberName] string prop = "")

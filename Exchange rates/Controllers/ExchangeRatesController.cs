@@ -15,7 +15,7 @@ namespace Exchange_rates.Controllers
             _cache = new Cache("Rates.json");
             _requests = new RequestProxy(_cache.Rates);
         }
-        // GET: ExchangeRatesController
+        
         [HttpGet("concrete/{currencyType}&{startPeriod}&{endPeriod}")]
         public async Task<ActionResult<List<Rates>>> GetConcreteDate(string currencyType, string startPeriod, string endPeriod)
         {

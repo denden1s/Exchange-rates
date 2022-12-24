@@ -29,7 +29,7 @@ namespace Exchange_rates.Models.JsonWork
         {
             var options = new JsonSerializerOptions
             {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                PropertyNamingPolicy =JsonNamingPolicy.CamelCase,
                 WriteIndented = true
             };
             return JsonSerializer.Serialize(convertedObject, options);

@@ -6,7 +6,7 @@
         Title="Exchange rates" Height="500" Width="1000" MaxWidth="1000" MaxHeight="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinWidth="1000" MinHeight="500" FontFamily="Lucida Console" FontSize="14" ResizeMode="NoResize" Closing="Window_Closing" HorizontalAlignment="Center" VerticalAlignment="Center" WindowStartupLocation="CenterScreen" Icon="/1486564175-finance-currency-exchange_81498.ico">
     <Grid Height="500" Width="1000" MaxWidth="1000" MaxHeight="500" MinWidth="1000" MinHeight="500">
 
-        <syncfusion:SfChart Header="{Binding Header}" Margin="0,71,0,0" Height="386" VerticalAlignment="Top" HorizontalAlignment="Center" Width="954" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+        <syncfusion:SfChart Name ="Chart" Header="{Binding Header}" Margin="0,71,0,0" Height="386" VerticalAlignment="Top" HorizontalAlignment="Center" Width="954" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
 
             <syncfusion:SfChart.Behaviors>
                 <syncfusion:ChartZoomPanBehavior ZoomRelativeToCursor="True" >
