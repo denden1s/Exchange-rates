@@ -20,7 +20,7 @@ namespace Exchange_rates.Models.Requests
                 for (DateTime counter = start; counter < end; counter = counter.AddDays(1))
                 {
                     //https://www.nbrb.by/api/exrates/rates/RUB?ondate=2018-01-01&periodicity=0
-                    string request = $"https://www.nbrb.by/api/exrates/rates/{currencyType}?ondate={counter.ToString("u")}&periodicity=0&parammode=2";
+                    string request = $"https://www.nbrb.by/api/exrates/rates/{currencyType}?ondate={counter.ToString("yyyy-MM-dd")}&periodicity=0&parammode=2";
                     var _client = new RestClient(request);
                     var _request = new RestRequest("", Method.Get);
                     RestResponse response = _client.Execute(_request);
