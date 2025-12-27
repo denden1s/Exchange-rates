@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json;
 
 namespace Exchange_rates.Models.JsonWork
 {
